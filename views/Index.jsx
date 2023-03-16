@@ -8,7 +8,7 @@ export default function Index(props){
             {props.logs.map((item, index) => 
                             <li key = {index}>
                         <a href={`/logs/${item._id}`}>
-                            {item.title}
+                            {item.title} 
                         </a>
                     </li>                
             )}
