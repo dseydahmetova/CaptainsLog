@@ -13,9 +13,13 @@ export default function Show(props) {
             <p>{props.logs.createdAt.toString()}</p>
             <a href="/logs">Back</a>
             <br /><br />
+            <a href={`/logs/${props.logs._id}/edit`}>Edit</a>
+            <br /><br />
             <form action={`/logs/${props.logs._id}?_method=DELETE`} method="POST">
                 <button>Delete</button>
             </form>
+
+              
         </div>
     )
 }

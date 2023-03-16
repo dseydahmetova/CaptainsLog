@@ -37,3 +37,22 @@ module.exports.delete = async (req, res) => {
     }
     res.redirect('/logs')
 }
+
+module.exports.edit = async (req, res) => {
+    const logsData = await Log.findById(req.params.id)
+    res.render('Edit', { logs: logsData })
+}
+
+module.exports.update = async (req, res) => {
+    if (req.body.shipIsBroken) {
+        req.body.shipIsBroken = true
+    } else {
+        req.body.shipIsBroken = false
+    }
+    try {
+        await Log.findByIdAndUpdate(req.params.id, req.body)
+        res.redirect(`/logs/${req.params.id}`)
+    } catch (err) {
+        console.log(err)
+    }
+}
