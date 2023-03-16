@@ -7,24 +7,33 @@ module.exports.index = async (req, res) => {
 
 module.exports.show = async (req, res) => {
     const logsData = await Log.findById(req.params.id)
-    res.render('Show', { logs: logsData})
+    res.render('Show', { logs: logsData })
 }
 
 module.exports.new = (req, res) => {
     res.render('New')
 }
 
-module.exports.create = async(req, res) => {
+module.exports.create = async (req, res) => {
     if (req.body.shipIsBroken) {
         req.body.shipIsBroken = true
     } else {
         req.body.shipIsBroken = false
     }
-    try{
+    try {
         await Log.create(req.body)
 
-    }catch(err){
+    } catch (err) {
         console.log('error', err)
+    }
+    res.redirect('/logs')
+}
+
+module.exports.delete = async (req, res) => {
+    try {
+        await Log.findByIdAndDelete(req.params.id)
+    } catch (err) {
+        console.log(err)
     }
     res.redirect('/logs')
 }
