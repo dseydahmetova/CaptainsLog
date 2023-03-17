@@ -2,16 +2,16 @@ const Log = require('../model/CaptainModel')
 
 module.exports.index = async (req, res) => {
     const logsData = await Log.find()
-    res.render('Index', { logs: logsData })
+    res.render('logs/Index', { logs: logsData })
 }
 
 module.exports.show = async (req, res) => {
     const logsData = await Log.findById(req.params.id)
-    res.render('Show', { logs: logsData })
+    res.render('logs/Show', { logs: logsData })
 }
 
 module.exports.new = (req, res) => {
-    res.render('New')
+    res.render('logs/New')
 }
 
 module.exports.create = async (req, res) => {
@@ -40,7 +40,7 @@ module.exports.delete = async (req, res) => {
 
 module.exports.edit = async (req, res) => {
     const logsData = await Log.findById(req.params.id)
-    res.render('Edit', { logs: logsData })
+    res.render('logs/Edit', { logs: logsData })
 }
 
 module.exports.update = async (req, res) => {
