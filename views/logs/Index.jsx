@@ -15,7 +15,7 @@ export default function Index(props){
                     </li>                
             )}
             </ul>
-            <a className = "btn" href={`/logs/new`}>Add log</a>
+            <a className = "btn container" href={`/logs/new`}>Add log</a>
         </div>
         </DefaultLayout>
        
