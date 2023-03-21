@@ -1,4 +1,5 @@
 const Log = require('../model/CaptainModel')
+const log = require('../model/CaptainLog')
 
 module.exports.index = async (req, res) => {
     const logsData = await Log.find()
@@ -54,5 +55,15 @@ module.exports.update = async (req, res) => {
         res.redirect(`/logs/${req.params.id}`)
     } catch (err) {
         console.log(err)
+    }
+}
+
+module.exports.seed = async (req, res) => {
+    try{
+        await Log.deleteMany({})
+        await Log.create(log)
+        res.redirect('/logs')
+    }catch(err){
+        console.error()
     }
 }
